@@ -23,3 +23,42 @@ sqlite3
 Usage:
 
 To run the code snippets, download the required dataset and model files, install the dependencies, and run the Python scripts. You can modify the scripts according to your own datasets and models.
+
+# AKMeansClusteringSQL.py
+
+First, load your dataset as a NumPy array and save it to a file named purchases.npy in the same directory as the script. The dataset should have one row for each customer and columns representing the customer's purchase history or other features.
+
+Next, run the script with the following command:
+
+```
+python kmeans_sqlite.py
+```
+This will perform k-means clustering with 5 clusters, store the results in an SQLite database, and display the customers in each cluster.
+
+Additionally, the script will find and display the customers who are closest to the centroids of each cluster.
+
+# Functions
+The script includes the following functions:
+
+- create_customers_table(cursor): Creates a table in the SQLite database to store customer vectors and cluster assignments.
+- insert_customer_data(cursor, purchases, customer_clusters): Inserts the customer vectors and cluster assignments into the SQLite database.
+- retrieve_customers_by_cluster(cursor, cluster_id): Retrieves the customers in a specific cluster from the SQLite database.
+- display_customers(cluster_id, customers): Displays the customers in a specific cluster.
+- find_closest_customers_to_centroid(cursor, model): Finds the customers who are closest to the centroids of each cluster.
+Example
+An example output for this script may look like the following:
+```
+Cluster 0:
+(0, <memory at 0x7f8e6f2d2c40>, 0)
+(3, <memory at 0x7f8e6f2d2c40>, 0)
+Cluster 1:
+(1, <memory at 0x7f8e6f2d2c40>, 1)
+(4, <memory at 0x7f8e6f2d2c40>, 1)
+Cluster 2:
+(2, <memory at 0x7f8e6f2d2c40>, 2)
+
+Closest customers to centroids:
+Cluster 0: Customer ID 0
+Cluster 1: Customer ID 1
+Cluster 2: Customer ID 2
+```
