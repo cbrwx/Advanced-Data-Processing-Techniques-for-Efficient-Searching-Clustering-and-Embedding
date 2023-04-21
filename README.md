@@ -57,7 +57,7 @@ The code requires the following dependencies to be installed:
 - faiss
 - Elasticsearch
 - transformers
-- sklearn
+- sklearn (scikit-learn)
 - sqlite3
 
 # Usage:
